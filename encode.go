@@ -536,3 +536,11 @@ func (nt NullTime) Value() (driver.Value, error) {
 	}
 	return nt.Time, nil
 }
+
+func (nt NullTime) Format() (ft []byte) {
+	if nt.Valid {
+		ft = formatTs(nt.Time)
+	}
+
+	return ft
+}
